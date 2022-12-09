@@ -1,8 +1,43 @@
-+ In the folder "scripts", run: 
-	+ "prepare_data_*": format income and pib file. 
-	+ "get_nightlight_coordinates": get coordinates of nighttime lights points
-	+ "associate_cities_nightlights": associate each night light point to a city
-	+ "get_all_cities_coordinates": get all br city centers
-	+ "nightlights_distances_per_city": calculate the euclidean distance between the nightlights points and the center city
-	+ "nearest_nightlights_per_city": get the 100 nearest points to the city center
-	<!-- + "associate_images_income_city": associate each night light point to cities and income -->
+# Imagens de Satélite e Machine Learning para Previsão de Indicadores Socioeconômicos no Brasil
+
+## Introdução
+
+Repositório com o código para replicação dos resultados obtidos no projeto de mestrado "Imagens de Satélite e Machine Learning para Previsão de Indicadores Socioeconômicos no Brasil", que esta sendo realizado no Instituto de Ciências Matemáticas e de Computação - Universidade de São Paulo (ICMC - USP) pelo aluno João Pedro da Silva (jp.silva@usp.br).
+
+Este trabalho tem como objetivo utilizar Machine Learning e imagens de satélites para prever indicadores que são obtidos pelo Censo Demográfico. A princípio focando apenas no estado da Bahia e nos indicadores PIB e Renda média (trabalho em andamento).
+
+O projeto se baseia no artigo [Predicting socioeconomic indicators using transfer learning on imagery data: an application in Brazil](https://link.springer.com/article/10.1007/s10708-022-10618-3).
+
+Os passos a seguir mostram como repoduzir os resultados obtidos.
+  
+## Download data
+
++ Donwload da imagem noturna (NTL): https://ngdc.noaa.gov/eog/viirs/download_dnb_composites.html
+
+Os demais arquivos de entrada já estão presentes no repositório, mas podem ser acessados através dos seguintes links:
+
++ Indicadores:
+	+ PIB: https://sidra.ibge.gov.br/Tabela/5938
+	+ População: https://sidra.ibge.gov.br/Tabela/6579
+	+ Renda média: https://sidra.ibge.gov.br/tabela/3548
++ Shapefiles do Brasil e Bahia: https://portaldemapas.ibge.gov.br/ (clicando em "Organização do Território" -> "Malhas territoriais" -> "Malha de municípios")
++ Coordenadas de cada município do Brazil (centros de cidades): ftp://geoftp.ibge.gov.br/estrutura_territorial/localidades/Shapefile_SHP/BR_Localidades_2010_v1.shp
+
+## Executar scripts
+
++ Na pasta "scripts", executar na seguinte ordem: 
+	+ todos que começam com "prepare_data_*"
+	+ "get_nighttime_lights": Extrair caracteristicas da imagem de luz noturna (radiancia e geolocalização)
+	+ "associate_cities_nightlights": associar os pontos de luz noturna com cada município
+	+ "get_all_cities_coordinates": gerar um arquivo com a geolocalização de todos os centros de cidades da Bahia.
+	+ "nightlights_distances_per_city": calcular a distancia euclidiana entre os pontos de luz noturna e o centro da cidade.
+	+ "nearest_nightlights_per_city": filtrar apenas os 100 pontos mais próximos do centro da cidade.
+	+ em "scripts/visualization" rodar o arquivo "bubble_map_ba" para gerar visualizações da base de dados
+
+## Obter Google Maps Static images
+
+Após executar os scripts anteriores é necessário fazer o download das imagens diurnas de satélite no  Google Maps Static images:
+
++ Criar uma conta (ou utilizar um já existente) no Google Cloud
++ Adicionar uma chave de API para o "Maps API Key"
++ Em "scripts", executar o arquivo "download_google_images.py" substituindo a Key do Google Maps obtido no console.
