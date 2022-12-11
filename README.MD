@@ -4,11 +4,13 @@
 
 Repositório com o código para replicação dos resultados obtidos no projeto de mestrado "Imagens de Satélite e Machine Learning para Previsão de Indicadores Socioeconômicos no Brasil", que esta sendo realizado no Instituto de Ciências Matemáticas e de Computação - Universidade de São Paulo (ICMC - USP) pelo aluno João Pedro da Silva (jp.silva@usp.br).
 
-Este trabalho tem como objetivo utilizar Machine Learning e imagens de satélites para prever indicadores que são obtidos pelo Censo Demográfico. A princípio focando apenas no estado da Bahia e nos indicadores PIB e Renda média.
+Este trabalho tem como objetivo combinar imagens diurnas e noturnas de satélite, e aplicar a técnica de Transfer Learning para previsão de indicadores socioeconômicos ainda não cobertos pela literatura.
 
 O projeto se baseia no artigo [Predicting socioeconomic indicators using transfer learning on imagery data: an application in Brazil](https://link.springer.com/article/10.1007/s10708-022-10618-3) e esta em andamento.
 
-Os passos a seguir mostram como repoduzir os resultados obtidos.
+A princípio a rede esta sendo criada utilizando o modelo VGG16, aplicada apenas para as cidades do estado da Bahia e com o objetivo de prever PIB e Renda média da região.
+
+Os passos a seguir mostram como repoduzir os resultados preliminares.
   
 ## Download data
 
