@@ -4,9 +4,9 @@
 
 Repositório com o código para replicação dos resultados obtidos no projeto de mestrado "Imagens de Satélite e Machine Learning para Previsão de Indicadores Socioeconômicos no Brasil", que esta sendo realizado no Instituto de Ciências Matemáticas e de Computação - Universidade de São Paulo (ICMC - USP) pelo aluno João Pedro da Silva (jp.silva@usp.br).
 
-Este trabalho tem como objetivo utilizar Machine Learning e imagens de satélites para prever indicadores que são obtidos pelo Censo Demográfico. A princípio focando apenas no estado da Bahia e nos indicadores PIB e Renda média (trabalho em andamento).
+Este trabalho tem como objetivo utilizar Machine Learning e imagens de satélites para prever indicadores que são obtidos pelo Censo Demográfico. A princípio focando apenas no estado da Bahia e nos indicadores PIB e Renda média.
 
-O projeto se baseia no artigo [Predicting socioeconomic indicators using transfer learning on imagery data: an application in Brazil](https://link.springer.com/article/10.1007/s10708-022-10618-3).
+O projeto se baseia no artigo [Predicting socioeconomic indicators using transfer learning on imagery data: an application in Brazil](https://link.springer.com/article/10.1007/s10708-022-10618-3) e esta em andamento.
 
 Os passos a seguir mostram como repoduzir os resultados obtidos.
   
@@ -23,7 +23,7 @@ Os demais arquivos de entrada já estão presentes no repositório, mas podem se
 + Shapefiles do Brasil e Bahia: https://portaldemapas.ibge.gov.br/ (clicando em "Organização do Território" -> "Malhas territoriais" -> "Malha de municípios")
 + Coordenadas de cada município do Brazil (centros de cidades): ftp://geoftp.ibge.gov.br/estrutura_territorial/localidades/Shapefile_SHP/BR_Localidades_2010_v1.shp
 
-## Executar scripts
+## Scripts de Pré processamento de dados
 
 + Na pasta "scripts", executar na seguinte ordem: 
 	+ todos que começam com "prepare_data_*"
@@ -32,7 +32,6 @@ Os demais arquivos de entrada já estão presentes no repositório, mas podem se
 	+ "get_all_cities_coordinates": gerar um arquivo com a geolocalização de todos os centros de cidades da Bahia.
 	+ "nightlights_distances_per_city": calcular a distancia euclidiana entre os pontos de luz noturna e o centro da cidade.
 	+ "nearest_nightlights_per_city": filtrar apenas os 100 pontos mais próximos do centro da cidade.
-	+ em "scripts/visualization" rodar o arquivo "bubble_map_ba" para gerar visualizações da base de dados
 
 ## Obter Google Maps Static images
 
@@ -41,3 +40,11 @@ Após executar os scripts anteriores é necessário fazer o download das imagens
 + Criar uma conta (ou utilizar um já existente) no Google Cloud
 + Adicionar uma chave de API para o "Maps API Key"
 + Em "scripts", executar o arquivo "download_google_images.py" substituindo a Key do Google Maps obtido no console.
+
+## Extrair features
+
+Para extrair features das imagens diurnas de satélite, com o modelo de rede VGG16 e aplicando transfer learning, executar o arquivo "scripts/extract_cnn_transfer_learning_features"
+
+## Visualização de dados
+
+Em "scripts/visualization" é possível executar o arquivo "visualization_ba" para se obter visualizações da base de dados.
